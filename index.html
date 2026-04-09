@@ -1,0 +1,53 @@
+
+<html>
+<head>
+    <title>
+    </title>
+</head>
+<br> <br> <br>
+<body style ="text-align: center;background-color: #fff9c4; color: green;"> <div class="box">
+
+    <h1 id="title">Word Scramble for you!</h1>
+    <br>
+    <div id="scramble">Make guesses, but please take note that all of these words relate to an inside joke, or something that only we would know... </div>
+    <br>
+    <br>
+    <input type="text" id="input" placeholder="Take a guess..."style="background: lightpink;">   <button onclick="check()">Check</button><p id="stuff"></p><br> <br> <br> <br> <br> <br> <br><br> <br> <br> <br> <br> <button onclick="getHint()">Hint</button> 
+    <br> <br> <br> <br> <br> <br>
+    <h4> Note: There are spaces in some of the answers </h4>
+</div>
+
+<script>
+const myTitle = "Word Scramble";
+const myWords = ["deli meat pancake", "uwu", "right?", "momo", "tiggy", "inkpot", "owo", "lucky", "cupcake","cozy", "molly", "button box", "rise from a box", "uwu my owo", "all in", "two birds for one", "vibe of the tribe", "joey", "chandler", "ross", "monica", "phoebe", "rachel", "marcel", "joseop"];
+const winColor = "green";
+let current = "";
+document.getElementById("title").innerText =myTitle;
+
+  function start() {
+            current = myWords[Math.floor(Math.random() * myWords.length)];
+            let mixed = current.split('').sort(() => .5 - Math.random()).join('');
+            document.getElementById("scramble").innerText = mixed;
+            document.getElementById("input").value = "";
+        }
+
+function check(){
+    let guess = document.getElementById("input").value.toUpperCase();
+    if (guess === current.toUpperCase()){
+  document.getElementById("stuff").innerText = "You got it!";
+  document.getElementById("stuff").style.color = winColor;
+  setTimeout(start, 1000);
+}else{
+    document.getElementById("stuff").innerText = "Try Again";
+    document.getElementById("stuff").style.color = "red";
+}
+}
+
+function getHint() {
+    alert("The first letter is: " + current.charAt(0).toUpperCase());
+}
+
+start(); 
+</script>
+</body>
+</html>
